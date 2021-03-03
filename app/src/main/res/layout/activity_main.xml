@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:backgroundTint="@color/MainScreen">
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:text="CT-Projekt!"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/buttonGames"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/btColorMain"
+            android:onClick="onGameScreen"
+            android:text="Spiele"/>
+        <Button
+            android:id="@+id/buttonMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:text="Musik"
+            android:onClick="onMusicScreen"
+            android:backgroundTint="@color/btColorMain"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+        <Button
+            android:id="@+id/buttonCosmetics"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Cosmetics"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/btColorMain"
+            android:onClick="onCosmeticsScreen"/>
+        <Button
+            android:id="@+id/buttonOptions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Optionen"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/btColorMain"
+            android:onClick="onOptionsScreen"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameScreen"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Spielesammlung"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="7">
+
+
+        <Button
+            android:layout_margin="15dp"
+            android:id="@+id/buttonSnake"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Snake"
+            android:backgroundTint="@color/btColorMain" />
+
+        <Button
+            android:layout_margin="15dp"
+            android:id="@+id/buttonTicTacToe"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="TicTacToe"
+            android:backgroundTint="@color/btColorMain"
+            android:onClick="startTicTacToe"/>
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="7">
+
+
+        <Button
+            android:layout_margin="15dp"
+            android:id="@+id/buttonDoodleJump"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Doodle Jump"
+            android:backgroundTint="@color/btColorMain" />
+
+        <Button
+            android:layout_margin="15dp"
+            android:id="@+id/buttonFlappyBird"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Flappy Bird"
+            android:backgroundTint="@color/btColorMain" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="7">
+
+
+        <Button
+            android:layout_margin="15dp"
+            android:id="@+id/buttonMemory"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Memory"
+            android:backgroundTint="@color/btColorMain" />
+
+        <Button
+            android:layout_margin="15dp"
+            android:id="@+id/buttonRythm"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Rythm"
+            android:backgroundTint="@color/btColorMain" />
+    </LinearLayout>
+</LinearLayout>
