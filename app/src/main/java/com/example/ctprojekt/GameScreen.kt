@@ -17,7 +17,7 @@ class GameScreen : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun startMemory(view: View){
+    fun startMemoryDifficulty(view: View){
         val intent = Intent(this, Memory::class.java)
         startActivity(intent)
     }
