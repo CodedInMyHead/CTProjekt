@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">CT Projekt</string>
+    <string name="difficultyText">Wähle eine Schwierigkeit aus!</string>
+
+
+
+
+    /* MEMORY START */
+
+    <string name="memoryBabyDifficulty">Baby</string>
+    <string name="memoryEasyDifficulty">Einfach</string>
+    <string name="memoryMediumDifficulty">Mittel</string>
+    <string name="memoryHardDifficulty">Schwierig</string>
+    <string name="memorySweatDifficulty">Schwitzer</string>
+    <string name="memoryDeityDifficulty">Gottheit</string>
+
+    /* MEMORY END */
 </resources>

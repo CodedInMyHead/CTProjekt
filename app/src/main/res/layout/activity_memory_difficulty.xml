@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MemoryDifficulty"
+    android:layout_margin="20dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/difficultyText"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="22sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/buttonBaby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/btColorMain"
+            android:text="@string/memoryBabyDifficulty"
+            android:onClick="onBabyDifficulty"/>
+        <Button
+            android:id="@+id/buttonEasy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/btColorMain"
+            android:text="@string/memoryEasyDifficulty"
+            android:onClick="onEasyDifficulty"/>
+        <Button
+            android:id="@+id/buttonMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/btColorMain"
+            android:text="@string/memoryMediumDifficulty"
+            android:onClick="onMediumDifficulty"/>
+        <Button
+            android:id="@+id/buttonHard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/btColorMain"
+            android:text="@string/memoryHardDifficulty"
+            android:onClick="onHardDifficulty"/>
+        <Button
+            android:id="@+id/buttonSweat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/btColorMain"
+            android:text="@string/memorySweatDifficulty"
+            android:onClick="onSweatDifficulty"/>
+        <Button
+            android:id="@+id/buttonDeity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/btColorMain"
+            android:text="@string/memoryDeityDifficulty"
+            android:onClick="onDeityDifficulty" />
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
