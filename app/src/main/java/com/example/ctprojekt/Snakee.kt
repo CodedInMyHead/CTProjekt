@@ -5,6 +5,10 @@ class Snakee {
     var b = 0
     fun add(a: Int, b:Int):Int{
         return a + b
+
+    }
+    fun lol(a: Int, b:Int):Int{
+        return a +b
     }
 
 }
