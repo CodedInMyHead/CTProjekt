@@ -16,4 +16,14 @@ class GameScreen : AppCompatActivity() {
         val intent = Intent(this, TicTacToe::class.java)
         startActivity(intent)
     }
+
+    fun startMemory(view: View){
+        val intent = Intent(this, Memory::class.java)
+        startActivity(intent)
+    }
+
+    fun startSnake(view: View){
+        val intent = Intent(this, Snake::class.java)
+        startActivity(intent)
+    }
 }
