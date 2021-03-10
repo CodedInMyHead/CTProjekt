@@ -16,4 +16,5 @@ class GameScreen : AppCompatActivity() {
         val intent = Intent(this, TicTacToe::class.java)
         startActivity(intent)
     }
+
 }
