@@ -7,8 +7,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
+
+
         android:theme="@style/Theme.CTProjekt">
+<<<<<<< Updated upstream
         <activity android:name=".TicTacToe"></activity>
+=======
+        <activity android:name=".CosmeticSelection"></activity>
+        <activity android:name=".CosmeticShop" />
+        <activity android:name=".Memory" />
+        <activity android:name=".Snake" >
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:screenOrientation="landscape"
+        </activity>
+        <activity android:name=".TicTacToe" />
+>>>>>>> Stashed changes
         <activity android:name=".Options" />
         <activity android:name=".Cosmetics" />
         <activity android:name=".MusicScreen" />
