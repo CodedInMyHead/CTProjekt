@@ -12,6 +12,7 @@
 
         android:theme="@style/Theme.CTProjekt">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <activity android:name=".TicTacToe"></activity>
 =======
         <activity android:name=".CosmeticSelection"></activity>
@@ -22,6 +23,23 @@
             android:screenOrientation="landscape"
         </activity>
         <activity android:name=".TicTacToe" />
+>>>>>>> Stashed changes
+=======
+
+        <activity android:name=".TicTacToe"></activity>
+
+        <activity android:name=".CosmeticSelection"></activity>
+        <activity android:name=".CosmeticShop" />
+        <activity android:name=".Memory" />
+        <activity android:name=".Snake" ></activity>
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:screenOrientation="landscape"
+        <activity android:name=".SnakeActivity">
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:screenOrientation="landscape"
+        </activity>
+
+
 >>>>>>> Stashed changes
         <activity android:name=".Options" />
         <activity android:name=".Cosmetics" />
