@@ -8,7 +8,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CTProjekt">
-        <activity android:name=".MemoryDifficulty"></activity>
+        <activity android:name=".MemorySweat"></activity>
+        <activity android:name=".MemoryHard" />
+        <activity android:name=".MemoryMedium" />
+        <activity android:name=".MemoryEasy" />
+        <activity android:name=".MemoryDifficulty" />
         <activity android:name=".CosmeticSelection" />
         <activity android:name=".CosmeticShop" />
         <activity android:name=".Memory" />
