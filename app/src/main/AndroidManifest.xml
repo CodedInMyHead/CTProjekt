@@ -12,7 +12,7 @@
         <activity android:name=".CosmeticSelection" />
         <activity android:name=".CosmeticShop" />
         <activity android:name=".Memory" />
-        <activity android:name=".Snake" />
+        <activity android:name=".snake.Snake" />
         <activity android:name=".TicTacToe" />
         <activity android:name=".Options" />
         <activity android:name=".Cosmetics" />

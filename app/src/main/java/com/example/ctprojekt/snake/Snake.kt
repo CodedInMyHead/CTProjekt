@@ -1,8 +1,9 @@
-package com.example.ctprojekt
+package com.example.ctprojekt.snake
 
 import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.ctprojekt.R
 
 class Snake : AppCompatActivity() {
     var snakeEngine: SnakeEngine? = null

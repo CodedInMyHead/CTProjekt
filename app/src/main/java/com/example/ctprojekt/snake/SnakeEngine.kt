@@ -1,19 +1,17 @@
-package com.example.ctprojekt
+package com.example.ctprojekt.snake
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Point
-import android.util.Size
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import androidx.annotation.Dimension
 //import androidx.constraintlayout.solver.state.Dimension
 import java.util.*
 
-class SnakeEngine(context: Context, size: Point): SurfaceView(context), Runnable{
+class SnakeEngine(context: Context?, size: Point): SurfaceView(context), Runnable{
 
 
 
@@ -23,10 +21,9 @@ class SnakeEngine(context: Context, size: Point): SurfaceView(context), Runnable
 
     // To hold a reference to the Activity
 
-    //TODO("Not running")
-    //private val context: Context? = null
 
-    // for plaing sound effects
+
+
 
     // For tracking movement Heading
     enum class Heading {
@@ -69,7 +66,7 @@ class SnakeEngine(context: Context, size: Point): SurfaceView(context), Runnable
     private var score = 0
 
     //The location in the grid of all the segments
-    //TODO not running
+
 
     private lateinit var snakeXs: MutableList<Int>
     private lateinit var snakeYs: MutableList<Int>
