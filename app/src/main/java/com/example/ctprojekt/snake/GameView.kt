@@ -38,12 +38,12 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
     init {
         mContext = context
         mHolder = holder
-        mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+        mPaint = Paint(Paint.ANTI_ALIAS_FLAG) //keine Kantenklättung
         mPaint?.setColor(Color.RED)
         snakee = Snakee()
         timeToUpdate = System.currentTimeMillis()
         when {
-            mHolder != null -> mHolder?.addCallback(this)
+            mHolder != null -> mHolder?.addCallback(this)//Informationen Änderungen
         }
         //alpha = 0f
         mThread = Thread(this)

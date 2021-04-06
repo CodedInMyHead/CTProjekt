@@ -8,12 +8,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CTProjekt">
-        <activity android:name=".snake.SnakeActivity"></activity>
+        <activity android:name=".snake.GameActivity"/>
+        <activity android:name=".snake.SnakeActivity"
+            android:screenOrientation="landscape"></activity>
         <activity android:name=".MemoryDifficulty" />
         <activity android:name=".CosmeticSelection" />
         <activity android:name=".CosmeticShop" />
         <activity android:name=".Memory" />
-        <activity android:name=".snake.Snake" />
         <activity android:name=".TicTacToe" />
         <activity android:name=".Options" />
         <activity android:name=".Cosmetics" />

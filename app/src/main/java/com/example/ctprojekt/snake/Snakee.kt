@@ -10,13 +10,13 @@ import kotlin.collections.ArrayList
 class Snakee : Collidable, Runnable {
 
 
+
     private var mPaint = Paint()
     private var mPath = Path()
     var state = SpriteState.ALIVE
 
     private var worm_pace = 0f
     private var timeToMove = 0L
-
     @Volatile
     private var mCurrentMoveVector = PointF()
     private var mTargetMoveVec = PointF()
@@ -41,7 +41,16 @@ class Snakee : Collidable, Runnable {
         val dx = (mTargetMoveVec.x - mCurrentMoveVector.x) / mAnimationFR
         val dy = (mTargetMoveVec.y - mCurrentMoveVector.y) / mAnimationFR
 
+        while (Maths.CosineSim(mCurrentMoveVector, mTargetMoveVec) < 0.98 && isRotatingHead) {
+            val rVec = PointF()
+            rVec.set(mCurrentMoveVector)
+            rVec.offset(dx, dy)
+            val sc = Maths.VecSinCos(rVec)
 
+            mCurrentMoveVector.set(worm_pace * sc.x, worm_pace * sc.y)
+            Log.d("rotate", mCurrentMoveVector.toString())
+            Thread.sleep(1000L / mAnimationFR)
+        }
 
         mCurrentMoveVector.set(mTargetMoveVec)
         isRotatingHead = false
@@ -76,7 +85,7 @@ class Snakee : Collidable, Runnable {
         val startP = PointF(0f, 15f)
         val r90Vec = PointF(0f, -1f)
         mHeadPoints.forEach {
-
+            it!!.set(Maths.RotatedCoordinate(startP.x, startP.y, r90Vec))
             startP.set(it)
         }
 
@@ -108,6 +117,7 @@ class Snakee : Collidable, Runnable {
 
         val dxOrigin = 0f
         val dyOrigin = mMoveAmplitude * Math.sin(mHeadRadial)
+        val dTranspose = Maths.RotatedCoordinate(dxOrigin, dyOrigin.toFloat(), mCurrentMoveVector)
 
         //update body part
         for (i in (bodyPoints.size - 1) downTo 1) {
@@ -115,14 +125,10 @@ class Snakee : Collidable, Runnable {
         }
 
         //Location of head
-       // bodyPoints[0].set
-        /*
-            mHeadTracker.x + dTranspose.x,
-            mHeadTracker.y + dTranspose.y
-
-         */
-
-        //)
+        bodyPoints[0].set(
+                mHeadTracker.x + dTranspose.x,
+                mHeadTracker.y + dTranspose.y
+        )
 
     }
 
@@ -140,7 +146,9 @@ class Snakee : Collidable, Runnable {
     private fun getHeadPoints(): ArrayList<PointF> {
         val hps = arrayListOf<PointF>()
         mHeadPoints.forEach {
-
+            hps.add(
+                    Maths.RotatedCoordinate(it.x, it.y, mCurrentMoveVector)
+            )
             hps.last().offset(bodyPoints[0].x, bodyPoints[0].y)
         }
         return hps
@@ -174,8 +182,8 @@ class Snakee : Collidable, Runnable {
         mPaint.setColor(Color.GREEN)
 
         c?.drawPoint(
-            nose.x, nose.y,
-            mPaint
+                nose.x, nose.y,
+                mPaint
         )
         mPath.reset()
     }
@@ -200,17 +208,14 @@ class Snakee : Collidable, Runnable {
     private fun updateDirection() {
         isRotatingHead = false
         val v = PointF(destination.x - mHeadTracker.x, destination.y - mHeadTracker.y)
-        //val sc = Maths.VecSinCos(v)
-        /*
+        val sc = Maths.VecSinCos(v)
         mTargetMoveVec.set(
-            worm_pace * sc.x,
-            worm_pace * sc.y
+                worm_pace * sc.x,
+                worm_pace * sc.y
         )
-
-         */
         isRotatingHead = true
 
         Thread(mRotateHeadRunnable).start()
     }
-}
 
+}
