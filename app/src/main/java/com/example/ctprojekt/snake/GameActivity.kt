@@ -1,18 +1,22 @@
 package com.example.ctprojekt.snake
 
 import android.graphics.Color
+import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
 class GameActivity : AppCompatActivity() {
 
+
     private var mGameView: GameView? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mGameView = GameView(this)
+        var size = Point()
+        display?.getSize(size)
+        mGameView = GameView(this, size)
         //mGameView?.setBackgroundColor(Color.WHITE)
         setContentView(mGameView)
 
@@ -60,4 +64,6 @@ class GameActivity : AppCompatActivity() {
                 or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
     }
+
+
 }
