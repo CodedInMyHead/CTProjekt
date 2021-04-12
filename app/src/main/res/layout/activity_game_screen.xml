@@ -69,7 +69,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Flappy Bird"
-            android:backgroundTint="@color/btColorMain" />
+            android:backgroundTint="@color/btColorMain"
+            android:onClick="startFlappyBird"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

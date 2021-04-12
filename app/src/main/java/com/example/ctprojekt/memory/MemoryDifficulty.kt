@@ -1,9 +1,10 @@
-package com.example.ctprojekt
+package com.example.ctprojekt.memory
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.ctprojekt.R
 
 class MemoryDifficulty : AppCompatActivity() {
 

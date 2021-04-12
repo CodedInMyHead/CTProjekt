@@ -1,7 +1,8 @@
-package com.example.ctprojekt
+package com.example.ctprojekt.memory
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.ctprojekt.R
 
 class Memory : AppCompatActivity() {
 

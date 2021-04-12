@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.ctprojekt.flappybird.FlappyBirdActivity
+import com.example.ctprojekt.memory.Memory
 import com.example.ctprojekt.snake.SnakeActivity
 
 class GameScreen : AppCompatActivity() {
@@ -25,6 +27,10 @@ class GameScreen : AppCompatActivity() {
 
     fun startSnake(view: View){
         val intent = Intent(this, SnakeActivity::class.java)
+        startActivity(intent)
+    }
+    fun startFlappyBird(view: View){
+        val intent = Intent(this, FlappyBirdActivity::class.java)
         startActivity(intent)
     }
 }
