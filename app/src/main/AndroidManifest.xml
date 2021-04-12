@@ -22,7 +22,7 @@
         <activity android:name=".CosmeticSelection" />
         <activity android:name=".CosmeticShop" />
         <activity android:name=".memory.Memory" />
-        <activity android:name=".TicTacToe" />
+        <activity android:name=".tictactoe.TicTacToe" />
         <activity android:name=".Options" />
         <activity android:name=".Cosmetics" />
         <activity android:name=".MusicScreen" />

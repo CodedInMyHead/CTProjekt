@@ -1,11 +1,11 @@
-package com.example.ctprojekt
+package com.example.ctprojekt.tictactoe
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import android.widget.Button
 import androidx.core.content.res.ResourcesCompat
+import com.example.ctprojekt.R
 
 class MyTicTacToeCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private lateinit var ticTacToeFieldStrokeVert1: Rect

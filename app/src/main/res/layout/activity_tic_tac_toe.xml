@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TicTacToe"
+    tools:context=".tictactoe.TicTacToe"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,11 +43,11 @@
                 android:layout_marginBottom="50dp"
                 android:layout_weight="5">
 
-                <com.example.ctprojekt.MyTicTacToeCanvas
+                <com.example.ctprojekt.tictactoe.MyTicTacToeCanvas
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" >
 
-                </com.example.ctprojekt.MyTicTacToeCanvas>
+                </com.example.ctprojekt.tictactoe.MyTicTacToeCanvas>
             </LinearLayout>
             //END OF TICTACTOE
 

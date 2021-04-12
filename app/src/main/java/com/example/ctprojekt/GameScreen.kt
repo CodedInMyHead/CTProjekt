@@ -7,6 +7,7 @@ import android.view.View
 import com.example.ctprojekt.flappybird.FlappyBirdActivity
 import com.example.ctprojekt.memory.Memory
 import com.example.ctprojekt.snake.SnakeActivity
+import com.example.ctprojekt.tictactoe.TicTacToe
 
 class GameScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

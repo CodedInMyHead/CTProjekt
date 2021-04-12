@@ -1,7 +1,8 @@
-package com.example.ctprojekt
+package com.example.ctprojekt.tictactoe
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.ctprojekt.R
 
 class TicTacToe : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
