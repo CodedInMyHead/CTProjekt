@@ -8,10 +8,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CTProjekt">
-        <activity android:name=".flappybird.FlappyBirdActivity"
-            android:screenOrientation="landscape"></activity>
-        <activity android:name=".flappybird.GameActivity"
-            android:screenOrientation="landscape"/>
+        <activity android:name=".tictactoe.TicTacToeActionActivity"></activity>
+        <activity
+            android:name=".flappybird.FlappyBirdActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".flappybird.GameActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".snake.GameActivity"
             android:screenOrientation="landscape" />

@@ -173,7 +173,7 @@ class GameView: SurfaceHolder.Callback, SurfaceView, GameLoop, Runnable {
     private fun moveBird() {
         // Move the body
         when (heading) {
-            Heading.UP -> birdY--
+            Heading.UP -> birdY -= 2
             Heading.DOWN -> birdY++
 
         }
