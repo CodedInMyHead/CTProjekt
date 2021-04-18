@@ -1,5 +1,6 @@
 package com.example.ctprojekt.flappybird
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +34,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     override fun onStop() {
+
         super.onStop()
         mGameView?.stop()
     }

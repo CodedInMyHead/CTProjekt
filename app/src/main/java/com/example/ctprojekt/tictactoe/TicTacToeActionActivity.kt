@@ -51,10 +51,12 @@ class TicTacToeActionActivity : AppCompatActivity() {
     fun onFieldClick(field: TextView){
         if (field.text == ""){
             field.text = currentPlayer
-            if (checkWinn()){when(currentPlayer){"X"->scorePlayer1++; "0"->scorePlayer2++};  tvPlayer1.text = "Player 1(X): $scorePlayer1" ;tvPlayer2.text = "Player 2(O): $scorePlayer2";clearGame()}
+            if (checkWinn()){when(currentPlayer){"X"->scorePlayer1++; "O"->scorePlayer2++};  tvPlayer1.text = "Player 1(X): $scorePlayer1" ;tvPlayer2.text = "Player 2(O): $scorePlayer2";clearGame()}
             currentPlayer = when(currentPlayer){"X" -> "O"; else -> "X"}
         }
-
+        if(checkWinn()){
+            tvCurrentPlayer.text = "Spieler $currentPlayer hat Gewonnen"
+        }
         tvCurrentPlayer.text = "Spieler $currentPlayer ist am Zug"
 
     }

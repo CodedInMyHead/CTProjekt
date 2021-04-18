@@ -1,6 +1,7 @@
 package com.example.ctprojekt.flappybird
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -10,6 +11,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import androidx.core.content.ContextCompat.startActivity
 import java.util.*
 
 class GameView: SurfaceHolder.Callback, SurfaceView, GameLoop, Runnable {
@@ -128,7 +130,7 @@ class GameView: SurfaceHolder.Callback, SurfaceView, GameLoop, Runnable {
             if (timeToUpdate()) {
                 update()
                 draw()
-                Thread.sleep( 100-score.toLong())
+                Thread.sleep( 100-when{score<50 ->score.toLong(); else ->70})
             }
 
         }
