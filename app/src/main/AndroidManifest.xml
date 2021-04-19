@@ -8,9 +8,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CTProjekt">
+        <activity android:name=".GoogleSignInActivity"></activity>
+        <activity
+            android:name=".FirebaseUIActivity"
+            android:label="@string/title_activity_firebase_u_i"
+            android:theme="@style/Theme.CTProjekt.NoActionBar" />
         <activity
             android:name=".flappybird.GameOverScreenFlappyBird"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity android:name=".tictactoe.TicTacToeActionActivity" />
         <activity
             android:name=".flappybird.FlappyBirdActivity"
@@ -25,12 +30,12 @@
             android:name=".snake.SnakeActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".memory.MemoryDifficulty" />
-        <activity android:name=".CosmeticSelection" />
-        <activity android:name=".CosmeticShop" />
+        <activity android:name=".cosmetic.CosmeticSelection" />
+        <activity android:name=".cosmetic.CosmeticShop" />
         <activity android:name=".memory.Memory" />
         <activity android:name=".tictactoe.TicTacToe" />
         <activity android:name=".Options" />
-        <activity android:name=".Cosmetics" />
+        <activity android:name=".cosmetic.Cosmetics" />
         <activity android:name=".MusicScreen" />
         <activity android:name=".GameScreen" />
         <activity android:name=".MainActivity">

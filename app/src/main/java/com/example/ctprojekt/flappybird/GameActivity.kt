@@ -18,7 +18,6 @@ class GameActivity : AppCompatActivity() {
         var size = Point()
         display?.getSize(size)
         mGameView = GameView(this, size)
-        //mGameView?.setBackgroundColor(Color.WHITE)
         setContentView(mGameView)
 
     }
@@ -54,7 +53,7 @@ class GameActivity : AppCompatActivity() {
                 or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                // Hide the nav bar and status bar
+                //versteckt Statusbar
                 or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_FULLSCREEN)
     }

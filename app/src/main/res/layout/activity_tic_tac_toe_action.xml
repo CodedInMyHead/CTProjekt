@@ -15,31 +15,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/tvPlayer1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Player1(X): 0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-        <TextView
-            android:id="@+id/tvPlayer2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Player2(0): 0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
-
-
 
 
     <TableLayout
@@ -67,7 +42,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#DDBDBD"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="22dp" />
 
             <TextView
                 android:id="@+id/tfTicTacToe1"
@@ -79,7 +55,8 @@
                 android:layout_marginRight="1dp"
                 android:layout_weight="1"
                 android:background="#DDBDBD"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="22dp" />
 
             <TextView
                 android:id="@+id/tfTicTacToe2"
@@ -87,7 +64,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#DDBDBD"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="22dp" />
         </TableRow>
 
         <TableRow
@@ -103,7 +81,8 @@
                 android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:background="#DDBDBD"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="22dp" />
 
             <TextView
                 android:id="@+id/tfTicTacToe4"
@@ -117,7 +96,8 @@
                 android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:background="#DDBDBD"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="22dp" />
 
             <TextView
                 android:id="@+id/tfTicTacToe5"
@@ -127,7 +107,8 @@
                 android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:background="#DDBDBD"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="22dp" />
         </TableRow>
 
         <TableRow
@@ -141,7 +122,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#DDBDBD"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="22dp" />
 
             <TextView
                 android:id="@+id/tfTicTacToe7"
@@ -153,7 +135,8 @@
                 android:layout_marginRight="1dp"
                 android:layout_weight="1"
                 android:background="#DDBDBD"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="22dp" />
 
             <TextView
                 android:id="@+id/tfTicTacToe8"
@@ -161,8 +144,38 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#DDBDBD"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="22dp" />
         </TableRow>
 
     </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="450dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvPlayer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Player1(X): 0"
+            android:textSize="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPlayer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player2(O): 0"
+            android:textSize="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

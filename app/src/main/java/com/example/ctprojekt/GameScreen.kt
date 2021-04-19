@@ -104,10 +104,11 @@ class GameScreen : AppCompatActivity() {
     fun onSwipeLeft(){
     }
     fun onSwipeTop(){
-    }
-    fun onSwipeBottom(){
         val intent = Intent(this, Options::class.java)
         startActivity(intent)
+    }
+    fun onSwipeBottom(){
+
     }
 
 }

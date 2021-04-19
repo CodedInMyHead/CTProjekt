@@ -23,10 +23,13 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
     private var blockSize: Int = 0
     private val NUM_BLOCKS_WIDE = 40
     private var numBlocksHigh = 0
+    /*
     private var FPS = 30
         set(value) {
             field = value
         }
+
+     */
     private var timeToUpdate = 0L
     private var bobX = 0
     private var bobY = 0
@@ -136,7 +139,7 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
     }
 
     override fun pause() {
-        TODO("Not yet implemented")
+        mRunning = false
     }
 
     override fun resume() {
@@ -183,9 +186,9 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
 
         // Hit the screen edge
         if (snakeXs[0] == -1) dead = true
-        if (snakeXs[0] >= NUM_BLOCKS_WIDE) dead = true
+        if (snakeXs[0] >= NUM_BLOCKS_WIDE + 2) dead = true
         if (snakeYs[0] == -1) dead = true
-        if (snakeYs[0] == numBlocksHigh) dead = true
+        if (snakeYs[0] == numBlocksHigh + 1) dead = true
 
         // Eaten itself?
         for (i in snakeLength - 1 downTo 1) {

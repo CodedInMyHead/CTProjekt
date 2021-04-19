@@ -79,15 +79,16 @@ class Options : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
          */
-        finish()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+
     }
     fun onSwipeLeft(){
     }
     fun onSwipeTop(){
     }
     fun onSwipeBottom(){
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        finish()
     }
 
 }
