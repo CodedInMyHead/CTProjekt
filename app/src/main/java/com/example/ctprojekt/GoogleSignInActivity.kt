@@ -8,20 +8,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-/*
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
- */
+
 
 /**
  * Demonstrate Firebase Authentication using a Google ID Token.
  */
 class GoogleSignInActivity : Activity() {
-    /*
+
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth
     // [END declare_auth]
@@ -95,22 +95,16 @@ class GoogleSignInActivity : Activity() {
             }
     }
     // [END auth_with_google]
-
     // [START signin]
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
     // [END signin]
-
     private fun updateUI(user: FirebaseUser?) {
-
     }
-
     companion object {
         private const val TAG = "GoogleActivity"
         private const val RC_SIGN_IN = 9001
     }
-
-     */
 }

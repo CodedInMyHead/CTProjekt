@@ -1,8 +1,12 @@
 package com.example.ctprojekt.snake
 
 
+import android.app.Activity
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Point
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
@@ -12,7 +16,7 @@ import java.util.*
 
 
 class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
-    private var mPaint: Paint? = null
+
     private var mContext: Context? = null
     private var mHolder: SurfaceHolder? = null
     private var mWidth: Int = 0
@@ -50,13 +54,8 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
         mWidth = size.x
         mHeight = size.y
 
-
-        // Work out how many pixels each block is
-
-        // Work out how many pixels each block is
         blockSize = mWidth / NUM_BLOCKS_WIDE
-        // How many blocks of the same size will fit into the height
-        // How many blocks of the same size will fit into the height
+
         numBlocksHigh = mHeight / blockSize
         newGame()
     }
@@ -69,8 +68,6 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
         paint = Paint()
         mContext = context
         mHolder = holder
-        mPaint = Paint(Paint.ANTI_ALIAS_FLAG) //keine Kantenklättung
-        mPaint?.setColor(Color.RED)
         timeToUpdate = System.currentTimeMillis()
         when {
             mHolder != null -> mHolder?.addCallback(this)//Informationen Änderungen
@@ -131,7 +128,7 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
 
 
     override fun stop() {
-        TODO("Not yet implemented")
+        mRunning = false
     }
 
     override fun start() {
@@ -153,25 +150,17 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
         bobY = random.nextInt(numBlocksHigh - 1) + 1
     }
     private fun eatBob() {
-        // Increase the size of the snake
+        // wenn appfle gegessen dann erhöhe score und länge
         snakeLength++
-        //replace Bob
-        // This reminds me of Edge of Tomorrow. Oneday Bob will be ready!
+        score += 1
+        //erstelle einen neuen Apfel
         spawnBob()
-        //add to the score
-        score = score + 1
-
     }
     private fun moveSnake() {
-        // Move the body
+        //Bewegeung des Körpers
         for (i in snakeLength downTo 1) {
-            // Start at the back and move it
-            // to the position of the segment in front of it
             snakeXs[i] = snakeXs[i - 1]
             snakeYs[i] = snakeYs[i - 1]
-
-            // Exclude the head because
-            // the head has nothing in front of it
         }
         when (heading) {
             Heading.UP -> snakeYs[0]--
@@ -181,7 +170,7 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
         }
     }
     private fun detectDeath(): Boolean {
-        // Has the snake died?
+        // Gestorben?
         var dead = false
 
         // Hit the screen edge
@@ -190,7 +179,7 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
         if (snakeYs[0] == -1) dead = true
         if (snakeYs[0] == numBlocksHigh + 1) dead = true
 
-        // Eaten itself?
+        // Selbstgegessen
         for (i in snakeLength - 1 downTo 1) {
             if (i > 4 && snakeXs[0] === snakeXs[i] && snakeYs[0] === snakeYs[i]) {
                 dead = true
@@ -199,32 +188,31 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
         return dead
     }
     override fun update() {
-        // Did the head of the snake eat Bob?
+        // apfel gegessen
         if (snakeXs[0] === bobX && snakeYs[0] === bobY) {
             eatBob()
         }
         moveSnake()
         if (detectDeath()) {
-            //start again
+            (context as Activity).finish()
             newGame()
         }
     }
     override fun draw() {
-        // Get a lock on the canvas
         if (mHolder!!.surface.isValid == true) {
+            //lock canvas das alles gleichzeitig geupdatet wird
             canvas = mHolder!!.lockCanvas()
 
-            // Fill the screen with Game Code School blue
+            // Blauer hintergrund
             canvas!!.drawColor(Color.argb(255, 26, 128, 182))
 
-            // Set the color of the paint to draw the snake white
+            // Schlangenfarbe
             paint!!.color = Color.argb(255, 255, 255, 255)
-
-            // Scale the HUD text
+            //text malen
             paint!!.textSize = 90f
             canvas!!.drawText("Score:$score", 10f, 70f, paint!!)
 
-            // Draw the snake one block at a time
+            //Male Schlange
             for (i in 0 until snakeLength) {
                 canvas!!.drawRect(
                         (snakeXs[i] * blockSize).toFloat(),
