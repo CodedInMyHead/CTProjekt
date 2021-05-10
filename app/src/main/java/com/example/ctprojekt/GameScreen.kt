@@ -1,10 +1,8 @@
 package com.example.ctprojekt
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
@@ -12,7 +10,6 @@ import androidx.core.view.GestureDetectorCompat
 import com.example.ctprojekt.flappybird.FlappyBirdActivity
 import com.example.ctprojekt.memory.Memory
 import com.example.ctprojekt.snake.SnakeActivity
-import com.example.ctprojekt.tictactoe.TicTacToe
 import com.example.ctprojekt.tictactoe.TicTacToeActionActivity
 
 class GameScreen : AppCompatActivity() {
@@ -29,7 +26,7 @@ class GameScreen : AppCompatActivity() {
     }
 
     fun startMemoryDifficulty(view: View){
-        val intent = Intent(this, Memory::class.java)
+        val intent = Intent(this, Memory()::class.java)
         startActivity(intent)
     }
 

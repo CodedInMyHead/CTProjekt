@@ -2,27 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ctprojekt">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
+        android:installLocation="preferExternal"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CTProjekt">
-        <activity android:name=".RigisterActivity"></activity>
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/appId"/>
+        <activity android:name=".goodlPlayServices.GoogleAPI">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <activity android:name=".memory.Memory" />
+        <activity android:name=".RigisterActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".GoogleSignInActivity" />
-        <activity
-            android:name=".FirebaseUIActivity"
-            android:label="@string/title_activity_firebase_u_i"
-            android:theme="@style/Theme.CTProjekt.NoActionBar" />
-        <activity
-            android:name=".flappybird.GameOverScreenFlappyBird"
+        <activity android:name=".flappybird.GameOverScreenFlappyBird"
             android:screenOrientation="landscape" />
         <activity android:name=".tictactoe.TicTacToeActionActivity" />
         <activity
@@ -37,16 +36,21 @@
         <activity
             android:name=".snake.SnakeActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".memory.MemoryDifficulty" />
-        <activity android:name=".cosmetic.CosmeticSelection" />
-        <activity android:name=".cosmetic.CosmeticShop" />
-        <activity android:name=".memory.Memory" />
         <activity android:name=".tictactoe.TicTacToe" />
         <activity android:name=".Options" />
         <activity android:name=".cosmetic.Cosmetics" />
         <activity android:name=".MusicScreen" />
+        <activity android:name=".memory.MemoryDifficulty" />
+        <activity android:name=".cosmetic.CosmeticSelection" />
+        <activity android:name=".cosmetic.SnakeShop" />
         <activity android:name=".GameScreen" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

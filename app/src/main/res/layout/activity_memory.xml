@@ -478,9 +478,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Musik"
                 android:backgroundTint="@color/btColorMain"
-                android:visibility="gone"/>
+                android:text="Musik"
+                android:visibility="gone" />
             <Button
                 android:id="@+id/button47"
                 android:layout_width="wrap_content"

@@ -1,22 +1,28 @@
 package com.example.ctprojekt.snake
 
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Point
+import android.nfc.Tag
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.AuthUI.getApplicationContext
 import java.util.*
 
 
+@SuppressLint("RestrictedApi")
 class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
-
+    private var dead: Boolean = false
     private var mContext: Context? = null
     private var mHolder: SurfaceHolder? = null
     private var mWidth: Int = 0
@@ -27,6 +33,10 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
     private var blockSize: Int = 0
     private val NUM_BLOCKS_WIDE = 40
     private var numBlocksHigh = 0
+    private var snakeColor:Int
+    private var snakeBackgroundColor:Int
+    private var applColor:Int
+    private var activeSkin:String
     /*
     private var FPS = 30
         set(value) {
@@ -63,6 +73,14 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
     constructor(ctx: Context, attrs: AttributeSet) : super(ctx, attrs)
 
     init{
+        val filename = "coins.txt"
+        val settings = AuthUI.getApplicationContext().getSharedPreferences(filename, 0)
+        val editor = settings.edit()
+        activeSkin = settings.getString("${settings.getInt("activeSkin",0).toString()}", "").toString()
+        snakeBackgroundColor = settings.getInt("background$activeSkin", Color.BLUE)
+        snakeColor = settings.getInt("snake$activeSkin", Color.WHITE)
+        applColor = settings.getInt("appl$activeSkin", Color.RED)
+
         snakeXs = IntArray(200)
         snakeYs = IntArray(200)
         paint = Paint()
@@ -171,7 +189,7 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
     }
     private fun detectDeath(): Boolean {
         // Gestorben?
-        var dead = false
+        dead = false
 
         // Hit the screen edge
         if (snakeXs[0] == -1) dead = true
@@ -187,6 +205,7 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
         }
         return dead
     }
+    @SuppressLint("RestrictedApi")
     override fun update() {
         // apfel gegessen
         if (snakeXs[0] === bobX && snakeYs[0] === bobY) {
@@ -194,50 +213,100 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
         }
         moveSnake()
         if (detectDeath()) {
+            //drawCoins()
+
+            val filename = "coins.txt"
+            val settings: SharedPreferences = getApplicationContext().getSharedPreferences(filename, 0)
+            val editor = settings.edit()
+            val mCoins = settings.getInt("coins", 0)
+
+            var coins = mCoins+score
+
+            editor.putInt("coins", coins)
+            // Apply the edits!
+            editor.apply()
+
+            //val settings: SharedPreferences = getApplicationContext().getSharedPreferences(filename, 0)
+
+            /*
+            var fileContents = ""
+            var coins = 0
+            //val fileContents = File(context.filesDir, filename)
+            //var coins =  fileContents.readText()
+            context.openFileInput(filename).use {
+                coins = it.read()
+            }
+            coins+= score
+            fileContents = coins.toString()
+            context.openFileOutput(filename, Context.MODE_PRIVATE).use {
+                it.write(fileContents.toByteArray())
+            }
+            */
             (context as Activity).finish()
+
             newGame()
         }
     }
     override fun draw() {
-        if (mHolder!!.surface.isValid == true) {
-            //lock canvas das alles gleichzeitig geupdatet wird
-            canvas = mHolder!!.lockCanvas()
+        if (dead){
+            if (mHolder!!.surface.isValid == true) {
+                canvas = mHolder!!.lockCanvas()
 
-            // Blauer hintergrund
-            canvas!!.drawColor(Color.argb(255, 26, 128, 182))
+                canvas!!.drawColor(Color.argb(255, 0, 0, 0))
 
-            // Schlangenfarbe
-            paint!!.color = Color.argb(255, 255, 255, 255)
-            //text malen
-            paint!!.textSize = 90f
-            canvas!!.drawText("Score:$score", 10f, 70f, paint!!)
+                paint!!.color = Color.argb(255, 255, 255, 255)
+                //text malen
+                paint!!.textSize = 90f
+                for (i in 0..score) {
+                    var mscore = score -1
+                    canvas!!.drawText("Score:$mscore", (numBlocksHigh * blockSize / 2).toFloat(), 100f, paint!!)
+                    canvas!!.drawText("Coins:$i", (numBlocksHigh * blockSize / 2).toFloat(), 100f, paint!!)
+                    Thread.sleep(100)
+                }
+                mHolder!!.unlockCanvasAndPost(canvas)
+            }
+        } else{
+            if (mHolder!!.surface.isValid == true) {
+                //lock canvas das alles gleichzeitig geupdatet wird
+                canvas = mHolder!!.lockCanvas()
 
-            //Male Schlange
-            for (i in 0 until snakeLength) {
+                // Blauer hintergrund
+                canvas!!.drawColor(snakeBackgroundColor)
+
+                // Schlangenfarbe
+                paint!!.color = snakeColor
+                //text malen
+                paint!!.textSize = 90f
+                canvas!!.drawText("Score:$score", 10f, 70f, paint!!)
+
+                //Male Schlange
+                for (i in 0 until snakeLength) {
+                    canvas!!.drawRect(
+                            (snakeXs[i] * blockSize).toFloat(),
+                            (snakeYs[i] * blockSize).toFloat(),
+                            (snakeXs[i] * blockSize + blockSize).toFloat(),
+                            (snakeYs[i] * blockSize + blockSize).toFloat(),
+                            paint!!
+                    )
+                }
+
+                // Set the color of the paint to draw Bob red
+                paint!!.color = applColor
+
+                // Draw Bob
                 canvas!!.drawRect(
-                        (snakeXs[i] * blockSize).toFloat(),
-                        (snakeYs[i] * blockSize).toFloat(),
-                        (snakeXs[i] * blockSize + blockSize).toFloat(),
-                        (snakeYs[i] * blockSize + blockSize).toFloat(),
+                        (bobX * blockSize).toFloat(),
+                        (bobY * blockSize).toFloat(), (
+                        bobX * blockSize + blockSize).toFloat(), (
+                        bobY * blockSize + blockSize).toFloat(),
                         paint!!
                 )
+
+                // Unlock the canvas and reveal the graphics for this frame
+                mHolder!!.unlockCanvasAndPost(canvas)
             }
-
-            // Set the color of the paint to draw Bob red
-            paint!!.color = Color.argb(255, 255, 0, 0)
-
-            // Draw Bob
-            canvas!!.drawRect(
-                    (bobX * blockSize).toFloat(),
-                    (bobY * blockSize).toFloat(), (
-                    bobX * blockSize + blockSize).toFloat(), (
-                    bobY * blockSize + blockSize).toFloat(),
-                    paint!!
-            )
-
-            // Unlock the canvas and reveal the graphics for this frame
-            mHolder!!.unlockCanvasAndPost(canvas)
         }
+
     }
     override fun onTouchEvent(motionEvent: MotionEvent): Boolean {
         when (motionEvent.action and MotionEvent.ACTION_MASK) {
@@ -259,5 +328,25 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
         }
         return true
     }
+    /*
+    fun drawCoins() {
+        if (mHolder!!.surface.isValid == true) {
+            canvas = mHolder!!.lockCanvas()
+
+            canvas!!.drawColor(Color.argb(255, 0, 0, 0))
+
+            paint!!.color = Color.argb(255, 255, 255, 255)
+            //text malen
+            paint!!.textSize = 90f
+            for (i in 0..score) {
+                var mscore = score -1
+                canvas!!.drawText("Score:$mscore", (numBlocksHigh * blockSize / 2).toFloat(), 100f, paint!!)
+                canvas!!.drawText("Coins:$i", (numBlocksHigh * blockSize / 2).toFloat(), 100f, paint!!)
+                Thread.sleep(100)
+            }
+        }
+    }
+
+     */
 }
 

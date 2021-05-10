@@ -15,7 +15,7 @@ class MemoryDifficulty : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memory_difficulty)
     }
-
+/*
 
     fun onBabyDifficulty(view: View){
         x = 2
@@ -70,5 +70,9 @@ class MemoryDifficulty : AppCompatActivity() {
         intent.putExtra("x", ""+x)
         intent.putExtra("y", ""+y)
         startActivity(intent)
+
+
     }
+
+ */
 }
