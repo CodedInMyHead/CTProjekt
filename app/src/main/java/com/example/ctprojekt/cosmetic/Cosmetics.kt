@@ -17,7 +17,7 @@ class Cosmetics : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.btnCosmeticSelection -> startActivity(Intent(this, CosmeticSelection::class.java))
+            R.id.btnCosmeticSelection -> startActivity(Intent(this, SnakeSelection::class.java))
             R.id.btnCosmeticShop -> startActivity(Intent(this, SnakeShop::class.java))
         }
     }

@@ -46,31 +46,73 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
     init{
+
         val filename = "coins.txt"
         val settings = AuthUI.getApplicationContext().getSharedPreferences(filename, 0)
         val editor = settings.edit()
-        editor.putString("1", "Darkmode")
-        editor.putInt("kDarkmode", 10)
-        editor.putBoolean("bDarkmode", false)
-        editor.putInt("backgroundDarkmode", Color.BLACK)
-        editor.putInt("snakeDarkmode", Color.GREEN)
-        editor.putInt("applDarkmode", Color.GREEN)
+        settings.getBoolean("baum", true)
+        if(settings.getBoolean("baum",true)){
+            editor.putString("1", "Darkmode")
+            editor.putInt("kDarkmode", 10)
+            editor.putBoolean("bDarkmode", false)
+            editor.putInt("backgroundDarkmode", Color.BLACK)
+            editor.putInt("snakeDarkmode", Color.GREEN)
+            editor.putInt("applDarkmode", Color.GREEN)
 
-        editor.putString("2", "Lila")
-        editor.putInt("kLila", 10)
-        editor.putBoolean("bLila", false)
-        editor.putInt("backgroundLila", Color.BLUE)
-        editor.putInt("snakeLila", Color.rgb(108,70,117))
-        editor.putInt("applLila", Color.GREEN)
+            editor.putString("2", "Lila")
+            editor.putInt("kLila", 0)
+            editor.putBoolean("bLila", false)
+            editor.putInt("backgroundLila", (Color.argb(255, 26, 128, 182)))
+            editor.putInt("snakeLila", Color.rgb(255,182,193))
+            editor.putInt("applLila", Color.GREEN)
 
-        editor.putInt("maxAnzahl", 3)
+            editor.putString("3", "Lukas")
+            editor.putInt("kLukas", 0)
+            editor.putBoolean("bLukas", false)
+            editor.putInt("backgroundLukas", Color.rgb(114,132,163))
+            editor.putInt("snakeLukas", Color.rgb(255,203,245))
+            editor.putInt("applLukas", Color.rgb(205,255,241))
 
-        editor.putInt("activeSkin", 0)
-        editor.apply()
+            editor.putString("4", "Gelb")
+            editor.putInt("kGelb", 0)
+            editor.putBoolean("bGelb", false)
+            editor.putInt("backgroundGelb", Color.rgb(0,0,0))
+            editor.putInt("snakeGelb", Color.rgb(255,155,30))
+            editor.putInt("applGelb", Color.rgb(103,207,31))
+
+            editor.putString("5", "Flo")
+            editor.putInt("kFlo", 0)
+            editor.putBoolean("bFlo", false)
+            editor.putInt("backgroundFlo", Color.rgb(0,0,0))
+            editor.putInt("snakeFlo", Color.rgb(255,155,30))
+            editor.putInt("applFlo", Color.rgb(103,207,31))
+
+            editor.putString("6", "Joona")
+            editor.putInt("kJoona", 0)
+            editor.putBoolean("bJoona", false)
+            editor.putInt("backgroundJoona", Color.rgb(242,188,148))
+            editor.putInt("snakeJoona", Color.rgb(48,17,13))
+            editor.putInt("applJoona", Color.rgb(114,38,132))
+
+
+            editor.putString("7", "Luki")
+            editor.putInt("kLuki", 0)
+            editor.putBoolean("bLuki", false)
+            editor.putInt("backgroundLuki", Color.rgb(104,118,138))
+            editor.putInt("snakeLuki", Color.rgb(83,41,175))
+            editor.putInt("applLuki", Color.rgb(40,200,40))
+
+
+            editor.putInt("maxAnzahl", 7)
+
+            editor.putInt("activeSkin", 0)
+            editor.putBoolean("baum", false)
+            editor.apply()
+        }
+
     }
 
     /*
-    * TODO Skin system für Spiele (Andere Snake-Farbe etc.)
     * TODO Options für das Aussehen (Standard Einstellungsmenü von Apps)
     * */
 

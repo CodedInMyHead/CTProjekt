@@ -76,7 +76,8 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
         val filename = "coins.txt"
         val settings = AuthUI.getApplicationContext().getSharedPreferences(filename, 0)
         val editor = settings.edit()
-        activeSkin = settings.getString("${settings.getInt("activeSkin",0).toString()}", "").toString()
+        val baum = settings.getInt("activeSkin",0)
+        activeSkin = settings.getString("$baum", "").toString()
         snakeBackgroundColor = settings.getInt("background$activeSkin", Color.BLUE)
         snakeColor = settings.getInt("snake$activeSkin", Color.WHITE)
         applColor = settings.getInt("appl$activeSkin", Color.RED)

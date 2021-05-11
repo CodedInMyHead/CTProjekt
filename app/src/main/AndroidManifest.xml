@@ -5,23 +5,25 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:installLocation="preferExternal"
         android:icon="@mipmap/ic_launcher"
+        android:installLocation="preferExternal"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CTProjekt">
+        <activity android:name=".cosmetic.SnakeSelection"></activity>
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/appId"/>
-        <activity android:name=".goodlPlayServices.GoogleAPI">
+            android:value="@string/appId" />
 
-        </activity>
+        <activity android:name=".goodlPlayServices.GoogleAPI"></activity>
         <activity android:name=".memory.Memory" />
         <activity android:name=".RigisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".GoogleSignInActivity" />
-        <activity android:name=".flappybird.GameOverScreenFlappyBird"
+        <activity
+            android:name=".flappybird.GameOverScreenFlappyBird"
             android:screenOrientation="landscape" />
         <activity android:name=".tictactoe.TicTacToeActionActivity" />
         <activity

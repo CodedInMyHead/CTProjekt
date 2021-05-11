@@ -1,5 +1,7 @@
 package com.example.ctprojekt.flappybird
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Canvas
@@ -11,6 +13,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import com.firebase.ui.auth.AuthUI
 import java.util.*
 
 
@@ -181,10 +184,19 @@ class GameView: SurfaceHolder.Callback, SurfaceView, GameLoop, Runnable {
         pillarYOben[pillarCounter - 1] = x - 5
     }
 
+    @SuppressLint("RestrictedApi")
     private fun collidePillar() {
+        val filename = "coins.txt"
+        val settings: SharedPreferences = AuthUI.getApplicationContext().getSharedPreferences(filename, 0)
+        val editor = settings.edit()
+        val mCoins = settings.getInt("coins", 0)
 
-        //erstelle ein neues Spiel
-        newGame()
+        var coins = mCoins+score
+
+        editor.putInt("coins", coins)
+        // Apply the edits!
+        editor.apply()
+        (context as Activity).finish()
     }
 
     private fun moveBird() {

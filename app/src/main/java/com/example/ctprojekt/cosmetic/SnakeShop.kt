@@ -42,7 +42,7 @@ class SnakeShop : AppCompatActivity() {
 
             button.setOnClickListener {
                 if (settings.getBoolean("b"+cosmeticList[i].name, false)) {
-                    Toast.makeText(this@SnakeShop, "Du kannst diesen Skin schon gekauft", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@SnakeShop, "Du hast diesen Skin schon gekauft", Toast.LENGTH_LONG).show()
                 }else{
                 if (coins >= cosmeticList[i].kosts){
 
@@ -50,7 +50,9 @@ class SnakeShop : AppCompatActivity() {
                     val editor = settings.edit()
                     editor.putInt("coins", coins)
                     editor.putBoolean("b"+cosmeticList[i].name,true)
+
                     editor.apply()
+                    var baum = settings.getBoolean("b"+cosmeticList[i].name, true)
                     tvCoins.text = coins.toString()
                     cosmeticList[i].bought = true
 
