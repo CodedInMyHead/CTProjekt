@@ -71,7 +71,6 @@ class MemoryDifficulty : AppCompatActivity() {
         intent.putExtra("y", ""+y)
         startActivity(intent)
 
-
     }
 
  */
