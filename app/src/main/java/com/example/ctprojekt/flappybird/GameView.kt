@@ -17,6 +17,7 @@ import com.firebase.ui.auth.AuthUI
 import java.util.*
 
 
+@SuppressLint("RestrictedApi")
 class GameView: SurfaceHolder.Callback, SurfaceView, GameLoop, Runnable {
     //Variablen deklaration
     private var mPaint: Paint? = null
@@ -35,6 +36,10 @@ class GameView: SurfaceHolder.Callback, SurfaceView, GameLoop, Runnable {
             field = value
         }
     private var timeToUpdate = 0L
+    private var birdColor:Int
+    private var birdBackgroundColor:Int
+    private var pillarColor:Int
+    private var activeSkin:String
 
     //private var snakeLength = 0
     private var score = 0
@@ -76,6 +81,17 @@ class GameView: SurfaceHolder.Callback, SurfaceView, GameLoop, Runnable {
     Initalisierung: Gibt den Variablen sinnvolle Werte
      */
     init {
+        val filename = "coins.txt"
+        val settings = AuthUI.getApplicationContext().getSharedPreferences(filename, 0)
+        val editor = settings.edit()
+        val baum = settings.getInt("flapActiveSkin",0)
+        activeSkin = settings.getString("$baum", "").toString()
+        birdBackgroundColor = settings.getInt("BackgroundFlap$activeSkin", Color.BLUE)
+        birdColor = settings.getInt("BirdFlap$activeSkin", Color.WHITE)
+        pillarColor = settings.getInt("PillarFlap$activeSkin", Color.RED)
+
+
+
         pillarYOben = IntArray(200)
         pillarYUnten = IntArray(200)
         pillarX = IntArray(200)
@@ -249,15 +265,15 @@ class GameView: SurfaceHolder.Callback, SurfaceView, GameLoop, Runnable {
             canvas = mHolder!!.lockCanvas()
 
             // Gamescreen = blue
-            canvas!!.drawColor(Color.argb(255, 26, 128, 182))
+            canvas!!.drawColor(birdBackgroundColor)
 
             // Stellt Größe und Fabe von dem Text ein
-            paint!!.color = Color.argb(255, 255, 255, 255)
+            paint!!.color = birdColor
             paint!!.textSize = 90f
             //Malt den Score Text
             canvas!!.drawText("Score:$score", 10f, 70f, paint!!)
             //Farbe = Red
-            paint!!.color = Color.argb(255, 255, 0, 0)
+            paint!!.color = birdColor
             // Draw the Bird
             canvas!!.drawRect(
                     (birdX * blockSize).toFloat(),
@@ -269,7 +285,7 @@ class GameView: SurfaceHolder.Callback, SurfaceView, GameLoop, Runnable {
 
 
             // Color = Green
-            paint!!.color = Color.argb(255, 0, 255, 0)
+            paint!!.color = pillarColor
 
             // Draw Pillers/Hindernisse
             for(i in 0 until pillarCounter){

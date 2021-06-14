@@ -11,13 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CTProjekt">
-        <activity android:name=".cosmetic.SnakeSelection"></activity>
+        <activity android:name=".cosmetic.FlappyBirdOwnSkin"></activity>
+        <activity android:name=".cosmetic.SnakeOwnSkin" />
+        <activity android:name=".cosmetic.FlappyBirdShop" />
+        <activity android:name=".cosmetic.FlappyBirdSelection" />
+        <activity android:name=".snake.SnakeControls" />
+        <activity android:name=".cosmetic.SnakeSelection" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/appId" />
 
-        <activity android:name=".goodlPlayServices.GoogleAPI"></activity>
+        <activity android:name=".goodlPlayServices.GoogleAPI" />
         <activity android:name=".memory.Memory" />
         <activity android:name=".RigisterActivity" />
         <activity android:name=".LoginActivity" />

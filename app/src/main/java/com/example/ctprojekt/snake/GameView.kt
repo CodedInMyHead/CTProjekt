@@ -22,6 +22,7 @@ import java.util.*
 
 @SuppressLint("RestrictedApi")
 class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
+    private var isContinued = false
     private var dead: Boolean = false
     private var mContext: Context? = null
     private var mHolder: SurfaceHolder? = null
@@ -135,7 +136,7 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
         while (mRunning){
             if(timeToUpdate()){
                 update()
-                draw()
+                if(!dead)draw()
                 Thread.sleep(100)
             }
 
@@ -190,7 +191,7 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
     }
     private fun detectDeath(): Boolean {
         // Gestorben?
-        dead = false
+
 
         // Hit the screen edge
         if (snakeXs[0] == -1) dead = true
@@ -213,16 +214,21 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
             eatBob()
         }
         moveSnake()
-        if (detectDeath()) {
-            //drawCoins()
-
+        if(!dead){
+            if(detectDeath()){
+                draw()
+            }
+        }
+        if (isContinued) {
             val filename = "coins.txt"
             val settings: SharedPreferences = getApplicationContext().getSharedPreferences(filename, 0)
             val editor = settings.edit()
             val mCoins = settings.getInt("coins", 0)
 
             var coins = mCoins+score
-
+            if (score > settings.getInt("highScore", 0) ){
+                editor.putInt("highScore", score)
+            }
             editor.putInt("coins", coins)
             // Apply the edits!
             editor.apply()
@@ -244,30 +250,44 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
             }
             */
             (context as Activity).finish()
-
-            newGame()
         }
     }
     override fun draw() {
-        if (dead){
-            if (mHolder!!.surface.isValid == true) {
+        if (mHolder!!.surface.isValid == true) {
+            if(dead){
                 canvas = mHolder!!.lockCanvas()
-
+                val filename = "coins.txt"
+                val settings: SharedPreferences = getApplicationContext().getSharedPreferences(filename, 0)
+                val lCoins = settings.getInt("coins", 0)
+                var v = 0
                 canvas!!.drawColor(Color.argb(255, 0, 0, 0))
 
                 paint!!.color = Color.argb(255, 255, 255, 255)
                 //text malen
                 paint!!.textSize = 90f
-                for (i in 0..score) {
-                    var mscore = score -1
-                    canvas!!.drawText("Score:$mscore", (numBlocksHigh * blockSize / 2).toFloat(), 100f, paint!!)
-                    canvas!!.drawText("Coins:$i", (numBlocksHigh * blockSize / 2).toFloat(), 100f, paint!!)
-                    Thread.sleep(100)
-                }
                 mHolder!!.unlockCanvasAndPost(canvas)
-            }
-        } else{
-            if (mHolder!!.surface.isValid == true) {
+                var mscore  = score
+                for (i in 0..score) {
+                    canvas = mHolder!!.lockCanvas()
+                    v = lCoins+i
+                    canvas!!.drawColor(Color.argb(255,0,0,0))
+                    canvas!!.drawText("GameOver", (NUM_BLOCKS_WIDE*blockSize/2).toFloat(), (numBlocksHigh*blockSize.toFloat()*(0.33333f)),paint!!)
+                    canvas!!.drawText("Score:$mscore", ((NUM_BLOCKS_WIDE*blockSize).toFloat()*(0.33333f)), ((numBlocksHigh * blockSize).toFloat()*(0.66666f)), paint!!)
+                    canvas!!.drawText("Coins:$v", ((NUM_BLOCKS_WIDE*blockSize).toFloat()*(0.66666f)), ((numBlocksHigh * blockSize).toFloat() *(0.66666f)), paint!!)
+                    mscore--
+                    Thread.sleep(1000/(score+1).toLong())
+
+                    mHolder!!.unlockCanvasAndPost(canvas)
+                }
+                canvas = mHolder!!.lockCanvas()
+                canvas!!.drawColor(Color.argb(255, 0, 0, 0))
+                paint!!.color = Color.argb(255, 255, 255, 255)
+                canvas!!.drawText("GameOver", (NUM_BLOCKS_WIDE*blockSize/2).toFloat(), (numBlocksHigh*blockSize.toFloat()*(0.33333f)),paint!!)
+                canvas!!.drawText("Score:$score", ((NUM_BLOCKS_WIDE*blockSize).toFloat()*(0.33333f)), ((numBlocksHigh * blockSize).toFloat()*(0.66666f)), paint!!)
+                canvas!!.drawText("Coins:$v", ((NUM_BLOCKS_WIDE*blockSize).toFloat()*(0.66666f)), ((numBlocksHigh * blockSize).toFloat() *(0.66666f)), paint!!)
+                canvas!!.drawText(("tap to Continue"), (NUM_BLOCKS_WIDE*blockSize/2).toFloat(), (numBlocksHigh*blockSize.toFloat()*(0.75f)),paint!!)
+                mHolder!!.unlockCanvasAndPost(canvas)
+            } else{
                 //lock canvas das alles gleichzeitig geupdatet wird
                 canvas = mHolder!!.lockCanvas()
 
@@ -279,37 +299,57 @@ class GameView : SurfaceView, SurfaceHolder.Callback, GameLoop, Runnable {
                 //text malen
                 paint!!.textSize = 90f
                 canvas!!.drawText("Score:$score", 10f, 70f, paint!!)
-
+                paint!!.color = snakeBackgroundColor
+                canvas!!.drawRect(
+                    (snakeXs[1]*(blockSize* (1/3))).toFloat(),
+                    (snakeYs[1]*(blockSize* (2/3))).toFloat(),
+                    (snakeXs[1]*((blockSize+blockSize)*(1/2))).toFloat(),
+                    (snakeYs[1]*((blockSize+blockSize)*(5/6))).toFloat(),
+                    paint!!)
+                paint!!.color = snakeColor
                 //Male Schlange
-                for (i in 0 until snakeLength) {
+                canvas!!.drawRect(
+                    (snakeXs[0]*blockSize).toFloat(),
+                    (snakeYs[0]*blockSize).toFloat(),
+                    (snakeXs[0]*blockSize+blockSize).toFloat(),
+                    (snakeYs[0]*blockSize+blockSize).toFloat(),
+                    paint!!)
+
+                paint!!.color = snakeColor
+                for (i in 1 until snakeLength) {
                     canvas!!.drawRect(
-                            (snakeXs[i] * blockSize).toFloat(),
-                            (snakeYs[i] * blockSize).toFloat(),
-                            (snakeXs[i] * blockSize + blockSize).toFloat(),
-                            (snakeYs[i] * blockSize + blockSize).toFloat(),
-                            paint!!
+                        (snakeXs[i] * blockSize).toFloat(),
+                        (snakeYs[i] * blockSize).toFloat(),
+                        (snakeXs[i] * blockSize + blockSize).toFloat(),
+                        (snakeYs[i] * blockSize + blockSize).toFloat(),
+                        paint!!
                     )
                 }
+
 
                 // Set the color of the paint to draw Bob red
                 paint!!.color = applColor
 
                 // Draw Bob
                 canvas!!.drawRect(
-                        (bobX * blockSize).toFloat(),
-                        (bobY * blockSize).toFloat(), (
-                        bobX * blockSize + blockSize).toFloat(), (
-                        bobY * blockSize + blockSize).toFloat(),
-                        paint!!
+                    (bobX * blockSize).toFloat(),
+                    (bobY * blockSize).toFloat(), (
+                            bobX * blockSize + blockSize).toFloat(), (
+                            bobY * blockSize + blockSize).toFloat(),
+                    paint!!
                 )
 
                 // Unlock the canvas and reveal the graphics for this frame
                 mHolder!!.unlockCanvasAndPost(canvas)
             }
+
+
         }
+
 
     }
     override fun onTouchEvent(motionEvent: MotionEvent): Boolean {
+        if (dead)isContinued = true
         when (motionEvent.action and MotionEvent.ACTION_MASK) {
             MotionEvent.ACTION_UP -> if (motionEvent.x >= mWidth / 2) {
                 when (heading) {

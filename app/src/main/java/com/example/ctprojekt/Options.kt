@@ -86,6 +86,8 @@ class Options : AppCompatActivity() {
     fun onSwipeLeft(){
     }
     fun onSwipeTop(){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
     fun onSwipeBottom(){
         finish()

@@ -43,5 +43,29 @@
             android:layout_height="wrap_content"
             android:text="Cosmetic Shop"
             android:backgroundTint="@color/btColorMain"/>
+
+        <Button
+            android:id="@+id/btnFlappyBirdSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flappy Bird Skin Selection"
+            android:backgroundTint="@color/btColorMain"/>
+
+        <Button
+            android:id="@+id/btnFlappyBirdShop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flappy Bird Skin Shop"
+            android:backgroundTint="@color/btColorMain"/>
+
+
+
+        <Button
+            android:id="@+id/btnDeletall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete all skins"
+            android:backgroundTint="@color/btColorMain"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

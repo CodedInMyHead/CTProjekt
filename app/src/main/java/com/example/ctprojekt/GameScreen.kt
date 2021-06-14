@@ -96,12 +96,13 @@ class GameScreen : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
          */
-        finish()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
     fun onSwipeLeft(){
     }
     fun onSwipeTop(){
-        val intent = Intent(this, Options::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
     fun onSwipeBottom(){

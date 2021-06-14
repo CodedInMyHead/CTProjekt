@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="Control"
+        android:text="skin selection"
         app:layout_constraintBottom_toBottomOf="@+id/startBtn"
         app:layout_constraintStart_toEndOf="@+id/startBtn"
         app:layout_constraintTop_toTopOf="@+id/startBtn"

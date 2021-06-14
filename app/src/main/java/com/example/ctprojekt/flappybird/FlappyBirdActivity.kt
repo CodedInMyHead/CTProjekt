@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import com.example.ctprojekt.GameScreen
 import com.example.ctprojekt.R
+import com.example.ctprojekt.cosmetic.FlappyBirdSelection
 
 class FlappyBirdActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +15,7 @@ class FlappyBirdActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_flappy_bird)
         findViewById<Button>(R.id.startBtn).setOnClickListener(this)
         findViewById<Button>(R.id.controlBtn).setOnClickListener(this)
-        findViewById<Button>(R.id.returnBtn).setOnClickListener(this)
+        findViewById<Button>(R.id.controlBtn).setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -22,6 +23,8 @@ class FlappyBirdActivity : AppCompatActivity(), View.OnClickListener {
             R.id.startBtn -> startActivity( Intent(this, GameActivity::class.java))
             //R.id.controlBtn ->
             R.id.returnBtn -> startActivity(Intent(this, GameScreen::class.java))
+
+            R.id.controlBtn -> startActivity(Intent(this, FlappyBirdSelection::class.java))
         }
     }
 

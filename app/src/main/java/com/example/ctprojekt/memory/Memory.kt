@@ -7,8 +7,10 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.ctprojekt.R
+import java.util.*
 
 class Memory() : AppCompatActivity() {
+    private var int: Int
     private lateinit var carts:MutableList<MemoryKarte>
     private lateinit var wordList:MutableList<String>
     private lateinit var cosmeticList: MutableList<String>
@@ -16,19 +18,25 @@ class Memory() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memory2)
         val layout = findViewById<LinearLayout>(R.id.layout)
+
         cosmeticList = mutableListOf("Baum", "Haus")
-        for (i in cosmeticList.indices){
+        while (wordList.lastIndex == -1){
             val button = Button(this)
-            button.id = i
-            // setting layout_width and layout_height using layout parameters
+            button.id = int
+            int++
             button.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-            button.text = cosmeticList[i]
-            button.setOnClickListener { Toast.makeText(this@Memory, "Hello GEEK", Toast.LENGTH_LONG).show() }
-            // add Button to LinearLayout
+            val random = Random()
+            val randomNumber = random.nextInt(wordList.lastIndex)
+            button.text = wordList[randomNumber]
+            button.setOnClickListener(){
+                Toast.makeText(this@Memory, "Du brauchst mehr Geld!!", Toast.LENGTH_LONG).show()
+            }
             layout.addView(button)
+            wordList.removeAt(randomNumber)
         }
     }
     init {
+        int = 0
         wordList = mutableListOf("hallo","baum", "flo")
     }
 }

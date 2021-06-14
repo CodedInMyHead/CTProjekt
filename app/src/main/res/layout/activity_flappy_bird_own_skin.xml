@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cosmetic.FlappyBirdOwnSkin">
+    <TextView
+        android:id="@+id/tvOwnSkin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="160dp"
+        android:text="Own Skin"
+        android:textSize="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/tvOwnSkin"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bird Color"
+                android:textSize="30dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <Button
+                        android:id="@+id/btnSnakeColor"
+
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Button" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <TextView
+                        android:id="@+id/tvSnakeRed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="30dp"/>
+                    <TextView
+                        android:id="@+id/tvSnakeGreen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="30dp"/>
+                    <TextView
+                        android:id="@+id/tvSnakeBlue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="30dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <SeekBar
+                        android:id="@+id/sbSnakeRed"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="255"
+                        android:progress="255"/>
+                    <SeekBar
+                        android:id="@+id/sbSnakeGreen"
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="255"
+                        android:progress="255" />
+                    <SeekBar
+                        android:id="@+id/sbSnakeBlue"
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="255"
+                        android:progress="255" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Background Color"
+                android:textSize="30dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <Button
+                        android:id="@+id/btnBackgroundColor"
+
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Button" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <TextView
+                        android:id="@+id/tvBackgroundRed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="30dp"/>
+                    <TextView
+                        android:id="@+id/tvBackgroundGreen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="30dp"/>
+                    <TextView
+                        android:id="@+id/tvBackgroundBlue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="30dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <SeekBar
+                        android:id="@+id/sbBackgroundRed"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="255"
+                        android:progress="255"/>
+                    <SeekBar
+                        android:id="@+id/sbBackgroundGreen"
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="255"
+                        android:progress="255" />
+                    <SeekBar
+                        android:id="@+id/sbBackgroundBlue"
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="255"
+                        android:progress="255" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pillar Color"
+                android:textSize="30dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <Button
+                        android:id="@+id/btnAppleColor"
+
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Button" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <TextView
+                        android:id="@+id/tvAppleRed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="30dp"/>
+                    <TextView
+                        android:id="@+id/tvAppleGreen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="30dp"/>
+                    <TextView
+                        android:id="@+id/tvAppleBlue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="30dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <SeekBar
+                        android:id="@+id/sbAppleRed"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="255"
+                        android:progress="255"/>
+                    <SeekBar
+                        android:id="@+id/sbAppleGreen"
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="255"
+                        android:progress="255" />
+                    <SeekBar
+                        android:id="@+id/sbAppleBlue"
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="255"
+                        android:progress="255" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnReturn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="return without save"
+                android:onClick="lul"/>
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="save"
+                android:onClick="onClick"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
